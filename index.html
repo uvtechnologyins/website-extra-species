@@ -117,6 +117,7 @@
         .hero-grid {
             display: grid;
             grid-template-columns: 1fr;
+            align-items: center; /* Ensures grid children align vertically */
         }
         .hero-cta-group {
             margin-top: 1.5rem;
@@ -142,9 +143,17 @@
         .stat-box {
             padding: 0.75rem;
         }
+        
+        /* FIX: Applied fixed height to the container and made the image fill it */
+        .hero-image-container {
+            height: 20rem; /* h-80 fixed height for mobile/default */
+            overflow: hidden;
+            background-color: #f59e0b; /* Background color for placeholder area */
+        }
         .hero-image-container img {
             width: 100%;
-            height: 20rem; /* h-80 */
+            height: 100%; /* Image fills the container */
+            object-fit: cover;
         }
 
         /* Feature/About Sections */
@@ -186,7 +195,7 @@
         }
         .contact-form-container { padding: 1.5rem; }
         .contact-form {
-            margin-top: 0.75rem; /* Adjusted spacing after removal of details block */
+            margin-top: 1.5rem; /* Restored margin to separate from contact details */
             display: grid;
             grid-template-columns: 1fr;
             gap: 0.75rem;
@@ -261,6 +270,11 @@
             .menu-button { display: none; }
             .hero-grid, .contact-grid { grid-template-columns: repeat(2, 1fr); }
             .feature-grid { grid-template-columns: repeat(3, 1fr); }
+            
+            /* On desktop, remove the fixed height from the image container to let the grid dictate the height */
+            .hero-image-container {
+                height: 100%; 
+            }
             
             /* Footer desktop alignment */
             .pre-footer-grid { grid-template-columns: repeat(2, 1fr); }
@@ -387,7 +401,14 @@
                         <h3 class="text-2xl font-bold">Get in touch</h3>
                         <p class="mt-2 text-gray-600">Wholesale & distribution enquiries or custom blends.</p>
 
-                        <!-- Contact Details above form - REMOVED AS REQUESTED -->
+                        <!-- Contact Details above form - RESTORED -->
+                        <div class="contact-details">
+                            <p class="font-semibold text-base">KARDX ENTERPRISE</p>
+                            <p>&#9990; 123-456-7890</p>
+                            <p>&#9993; <a href="mailto:info@mysite.com" class="text-amber-600">info@mysite.com</a></p>
+                            <p>&#x1F4CD; Unjha, Gujarat 384170, India</p>
+                        </div>
+                        <!-- End Contact Details -->
 
                         <form class="contact-form">
                             <input type="text" placeholder="Name" />
